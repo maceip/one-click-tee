@@ -29,4 +29,5 @@ jobs:
             cd ${{ github.sha }}
             git checkout 32df1380a78567ec12539c43eed362f2f670f5cc
             cd crates/notary/server
-            /home/ubuntu/.cargo/bin/cargo run --bin notary-server --features attestation 
+            echo "no-attestation"
+            /home/ubuntu/.cargo/bin/cargo run --bin notary-server
