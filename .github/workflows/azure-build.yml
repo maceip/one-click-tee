@@ -24,8 +24,9 @@ jobs:
          port: ${{ secrets.PORT }}
          command_timeout: 120m
          script: |
-            git clone https://github.com/tlsnotary/tlsn
-            cd tlsn
-            git checkout 3554db83e17b2e5fc98293b397a2907b7f023496
+            cd /tmp 
+            git clone https://github.com/tlsnotary/tlsn ${{ github.sha }}
+            cd ${{ github.sha }}
+            git checkout 32df1380a78567ec12539c43eed362f2f670f5cc
             cd crates/notary/server
             /home/ubuntu/.cargo/bin/cargo run --bin notary-server --features attestation 
