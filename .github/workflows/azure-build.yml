@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: azure-demo
+    - name: azure-demo ${{ github.sha }}
       uses: appleboy/ssh-action@v1.0.3
       with:
          host: ${{ secrets.HOST }}
@@ -26,6 +26,6 @@ jobs:
          script: |
             git clone https://github.com/tlsnotary/tlsn
             cd tlsn
-            git checkout ${{ github.sha }}
+            git checkout 3554db83e17b2e5fc98293b397a2907b7f023496
             cd crates/notary/server
-            cargo run --bin notary-server --features attestation 
+            /home/ubuntu/.cargo/bin/cargo run --bin notary-server --features attestation 
